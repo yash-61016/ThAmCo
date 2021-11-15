@@ -44,21 +44,26 @@ namespace ThAmCo.Catering.Controllers
 
 
 
-        // DELETE: api/MenuFoodItems/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<MenuFoodItem>> DeleteMenuFoodItem(int id)
-        {
-            var menuFoodItem = await _context.MenuFoodItems.FindAsync(id);
-            if (menuFoodItem == null)
-            {
-                return NotFound();
-            }
+        //// DELETE: api/MenuFoodItems/5
+        ////[HttpDelete("{id}")]
+        //[HttpDelete]
+        //[Route("api/item/{id1}/{id2}")]
+        //public async Task<ActionResult<MenuFoodItem>> DeleteMenuFoodItem(int menuId, int foodItemId)
+        //{
 
-            _context.MenuFoodItems.Remove(menuFoodItem);
-            await _context.SaveChangesAsync();
 
-            return menuFoodItem;
-        }
+        //    var menuFoodItem = await _context.MenuFoodItems.FindAsync(menuId, foodItemId);
+        //    if (menuFoodItem == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    _context.MenuFoodItems.Remove(menuFoodItem);
+        //    await _context.SaveChangesAsync();
+
+        //    return menuFoodItem;
+        //}
+        
 
         private bool MenuFoodItemExists(int id)
         {

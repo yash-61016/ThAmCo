@@ -8,6 +8,16 @@ namespace ThAmCo.Catering.Models
 {
     public class MenuFoodItem
     {
+        public MenuFoodItem()
+        {
+
+        }
+
+        public MenuFoodItem(int menuId, int foodItemId) : this()
+        {
+            MenuId = menuId;
+            FoodItemId = foodItemId;
+        }
 
         [Required]
         public int MenuId{ get; set; }
