@@ -24,7 +24,7 @@ namespace ThAmCo.Events.Models
                     CustomerId = 1,
                     FirstName = "Ora",
                     LastName = "Wagner",
-                    ContactNumber = 07726354812,
+                    ContactNumber = "07726354812",
                     EmailId = "enim.non.nisi@google.couk"
                 },
                 new Customer
@@ -39,7 +39,7 @@ namespace ThAmCo.Events.Models
                     CustomerId = 3,
                     FirstName = "Otto",
                     LastName = "Spencer",
-                    ContactNumber = 07582648124,
+                    ContactNumber = "07582648124",
                     EmailId = "ultrices.a@yahoo.ca"
                 },
                 new Customer
@@ -54,7 +54,7 @@ namespace ThAmCo.Events.Models
                     CustomerId = 5,
                     FirstName = "Dante",
                     LastName = "Luna",
-                    ContactNumber = 07845298243,
+                    ContactNumber = "07845298243",
                     EmailId = "ut.nec.urna@hotmail.org"
                 }, 
                 new Customer

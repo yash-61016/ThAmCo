@@ -17,7 +17,7 @@ namespace ThAmCo.Events.Models
             LastName = lastName;
             EmailId = emailId;
         }
-        public Customer(string firstName, string lastName, long contactNumber, string emailId): this()
+        public Customer(string firstName, string lastName, string contactNumber, string emailId): this()
         {
             FirstName = firstName;
             LastName = lastName;
@@ -35,9 +35,10 @@ namespace ThAmCo.Events.Models
         public string LastName { get; set; }
 
         [Display(Name = "Contact Number")]
-        public long ContactNumber { get; set; }
+        public string ContactNumber { get; set; }
 
         [Required]
+        [Display(Name = "Email Id")]
         public string EmailId { get; set; }
 
 
