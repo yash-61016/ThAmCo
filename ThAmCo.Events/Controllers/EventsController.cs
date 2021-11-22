@@ -162,7 +162,8 @@ namespace ThAmCo.Events.Controllers
             {
                 try
                 {
-                    _context.Update(@event);
+                    _context.Entry(@event).State = EntityState.Modified;
+                    _context.Entry(@event).Property("EventDateTime").IsModified = false;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
