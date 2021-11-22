@@ -1,4 +1,4 @@
-﻿@model ThAmCo.Events.Models.Event
+﻿@model ThAmCo.Events.ViewModels.EventTitleViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -20,6 +20,11 @@
             <div class="form-group">
                 <label asp-for="EventTitle" class="control-label"></label>
                 <input asp-for="EventTitle" class="form-control" />
+                <span asp-validation-for="EventTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EventTypeTitle" class="control-label"></label>
+                <select asp-for="EventTypeId" class="form-control" asp-items="ViewBag.EventType"></select>
                 <span asp-validation-for="EventTitle" class="text-danger"></span>
             </div>
             <div class="form-group">

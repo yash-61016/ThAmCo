@@ -86,9 +86,21 @@ namespace ThAmCo.Events.Controllers
         }
 
         // GET: Events/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            return View();
+            List<EventTypeDTO> eventTypes = new List<EventTypeDTO>();
+
+            HttpResponseMessage response = await client.GetAsync("api/eventtypes");
+            //EventTitleViewModel employeeDeatailsViewModel;
+
+            if (response.IsSuccessStatusCode)
+            {
+                eventTypes = await response.Content.ReadAsAsync<List<EventTypeDTO>>();
+                ViewBag.data = eventTypes;
+                ViewData["EventType"] = new SelectList(ViewBag.data, "Id", "Title");
+            }
+        
+                return View();
         }
 
         // POST: Events/Create
@@ -96,7 +108,7 @@ namespace ThAmCo.Events.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventId,EventDateTime,EventTitle")] Event @event)
+        public async Task<IActionResult> Create([Bind("EventId,EventDateTime,EventTitle,EventTypeId")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -120,6 +132,17 @@ namespace ThAmCo.Events.Controllers
             {
                 return NotFound();
             }
+            List<EventTypeDTO> eventTypes = new List<EventTypeDTO>();
+
+            HttpResponseMessage response = await client.GetAsync("api/eventtypes");
+            //EventTitleViewModel employeeDeatailsViewModel;
+
+            if (response.IsSuccessStatusCode)
+            {
+                eventTypes = await response.Content.ReadAsAsync<List<EventTypeDTO>>();
+                ViewBag.data = eventTypes;
+                ViewData["EventType"] = new SelectList(ViewBag.data, "Id", "Title", @event.EventTypeId);
+            }
             return View(@event);
         }
 
@@ -128,7 +151,7 @@ namespace ThAmCo.Events.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventId,EventDateTime,EventTitle")] Event @event)
+        public async Task<IActionResult> Edit(int id, [Bind("EventId,EventDateTime,EventTitle,EventTypeId")] Event @event)
         {
             if (id != @event.EventId)
             {

@@ -18,7 +18,7 @@ namespace ThAmCo.Events.Models
         [Required]
         public string EventTitle { get; set; }
 
-        [MinLength(3), MaxLength(3)]
+        //[MinLength(3), MaxLength(3)]
         public string EventTypeId { get; set; }
 
     }

@@ -17,10 +17,9 @@ namespace ThAmCo.Events.ViewModels
         [Required]
         public string EventTitle { get; set; }
 
-       
-
         [Required]
         public string EventTypeTitle { get; set; }
+        public string EventTypeId { get; set; }
 
     }
 }
