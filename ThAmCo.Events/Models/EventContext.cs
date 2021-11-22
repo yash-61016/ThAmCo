@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ThAmCo.Events.Models;
+using ThAmCo.Events.DTOs;
 
 namespace ThAmCo.Events.Models
 {
@@ -12,6 +13,8 @@ namespace ThAmCo.Events.Models
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Staff> Staff { get; set; }
 
+        public DbSet<Event> Events { get; set; }
+        
         public EventContext(DbContextOptions<EventContext> options)
             : base(options)
         {
@@ -22,7 +25,8 @@ namespace ThAmCo.Events.Models
             base.OnModelCreating(builder);
 
             builder.Entity<Customer>().HasData(
-                new Customer{
+                new Customer
+                {
                     CustomerId = 1,
                     FirstName = "Ora",
                     LastName = "Wagner",
@@ -35,7 +39,7 @@ namespace ThAmCo.Events.Models
                     FirstName = "Russell",
                     LastName = "Leon",
                     EmailId = "aliquam.nisl.nulla@outlook.edu"
-                }, 
+                },
                 new Customer
                 {
                     CustomerId = 3,
@@ -50,7 +54,7 @@ namespace ThAmCo.Events.Models
                     FirstName = "Wanda",
                     LastName = "Hebert",
                     EmailId = "morbi.tristique@protonmail.couk"
-                }, 
+                },
                 new Customer
                 {
                     CustomerId = 5,
@@ -58,7 +62,7 @@ namespace ThAmCo.Events.Models
                     LastName = "Luna",
                     ContactNumber = "07845298243",
                     EmailId = "ut.nec.urna@hotmail.org"
-                }, 
+                },
                 new Customer
                 {
                     CustomerId = 6,
@@ -76,7 +80,15 @@ namespace ThAmCo.Events.Models
                 new Staff { StaffId = 6, StaffFirstName = "Dhruv", StaffLastName = "Rathi", StaffType = "Waiter" },
                 new Staff { StaffId = 7, StaffFirstName = "Casey", StaffLastName = "Neistat", StaffType = "Host" }
                 );
+            builder.Entity<Event>().HasData(
+                new Event { EventId = 1, EventDateTime = new DateTime(2002,11,2, 12 , 30, 00), EventTitle = "Harode's 11th Birthday", EventTypeId = "PTY"},
+                new Event { EventId = 2, EventDateTime = new DateTime(2021, 10, 3, 10, 00, 00), EventTitle = "Online Covid-19 vaccination Awareness", EventTypeId = "MET"},
+                new Event { EventId = 3, EventDateTime = new DateTime(2019, 04, 19, 8, 30, 00), EventTitle = "Tanmay Weds Tanvi", EventTypeId = "WED"}
+                );
         }
 
+        public DbSet<ThAmCo.Events.DTOs.EventTypeDTO> EventTypeDTO { get; set; }
+
+
         }
-}
+    }

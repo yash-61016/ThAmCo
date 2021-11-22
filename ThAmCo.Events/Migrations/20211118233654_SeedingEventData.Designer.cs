@@ -3,36 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ThAmCo.Events.Models;
 
 namespace ThAmCo.Events.Migrations
 {
     [DbContext(typeof(EventContext))]
-    partial class EventContextModelSnapshot : ModelSnapshot
+    [Migration("20211118233654_SeedingEventData")]
+    partial class SeedingEventData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("ThAmCo.Events.DTOs.EventTypeDTO", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(3)")
-                        .HasMaxLength(3);
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EventTypeDTO");
-                });
 
             modelBuilder.Entity("ThAmCo.Events.Models.Customer", b =>
                 {
@@ -119,12 +106,7 @@ namespace ThAmCo.Events.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("EventTitle")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EventTypeId")
-                        .HasColumnType("nvarchar(3)")
-                        .HasMaxLength(3);
 
                     b.HasKey("EventId");
 
@@ -135,22 +117,19 @@ namespace ThAmCo.Events.Migrations
                         {
                             EventId = 1,
                             EventDateTime = new DateTime(2002, 11, 2, 12, 30, 0, 0, DateTimeKind.Unspecified),
-                            EventTitle = "Harode's 11th Birthday",
-                            EventTypeId = "PTY"
+                            EventTitle = "Harode's 11th Birthday"
                         },
                         new
                         {
                             EventId = 2,
                             EventDateTime = new DateTime(2021, 10, 3, 10, 0, 0, 0, DateTimeKind.Unspecified),
-                            EventTitle = "Online Covid-19 vaccination Awareness",
-                            EventTypeId = "MET"
+                            EventTitle = "Online Covid-19 vaccination Awareness"
                         },
                         new
                         {
                             EventId = 3,
                             EventDateTime = new DateTime(2019, 4, 19, 8, 30, 0, 0, DateTimeKind.Unspecified),
-                            EventTitle = "Tanmay Weds Tanvi",
-                            EventTypeId = "WED"
+                            EventTitle = "Tanmay Weds Tanvi"
                         });
                 });
 
